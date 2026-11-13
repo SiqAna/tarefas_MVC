@@ -1,15 +1,196 @@
-body{
-    background-color: rgb(255, 139, 159);
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* Reset e Configurações Globais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-h3{
-    color:white
+body {
+    background-color: #ffeef2; /* Rosa claro suave */
+    color: #800033; /* Rosa escuro / Vinho elegante para as fontes */
+    font-family: 'Playfair Display', Georgia, serif;
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
-p{
-    color: rgb(228, 39, 70);
-    font-size: 20px;
-    background-color: blue;
-    max-height: 130px;
-    max-width: 150px;
+/* Molduras / Detalhes Rococó nos 4 Cantos */
+body::before,
+body::after {
+    content: "❧ 𝒬𝓊ℯℯ𝓃 ℯ𝓁ℯℊ𝒶𝓃𝒸ℯ ❧";
+    position: fixed;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: #c97793;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Cantos Superiores */
+body::before {
+    top: 15px;
+    left: 20px;
+    content: "❀";
+    border-top: 3px double #d488a0;
+    border-left: 3px double #d488a0;
+    padding: 10px;
+    border-top-left-radius: 15px;
+}
+
+/* Canto Superior Direito */
+head::after {
+    content: "❀";
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: #c97793;
+    border-top: 3px double #d488a0;
+    border-right: 3px double #d488a0;
+    padding: 10px;
+    border-top-right-radius: 15px;
+}
+
+/* Cantos Inferiores */
+body::after {
+    bottom: 15px;
+    left: 20px;
+    content: "✽ ✦ ✽";
+    border-bottom: 3px double #d488a0;
+    border-left: 3px double #d488a0;
+    padding: 10px;
+    border-bottom-left-radius: 15px;
+}
+
+/* Elemento decorativo extra para o canto inferior direito */
+html::after {
+    content: "✽ ✦ ✽";
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: #c97793;
+    border-bottom: 3px double #d488a0;
+    border-right: 3px double #d488a0;
+    padding: 10px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Títulos e Enfeites de Texto */
+h1 {
+    color: #8a1538 !important; /* Sobrescreve o estilo inline */
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px #ffd6e0;
+}
+
+h3 {
+    color: #d488a0;
+    text-align: center;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin: 10px 0;
+}
+
+/* Formulário e Entradas de Texto */
+input[type="text"],
+input[type="date"] {
+    background-color: #fff5f7;
+    border: 2px solid #e6a5b8;
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: #800033;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    outline: none;
+    margin: 5px;
+    box-shadow: inset 0 2px 4px rgba(200, 100, 130, 0.1);
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus {
+    border-color: #b3476b;
+    box-shadow: 0 0 8px #f4c2d0;
+}
+
+/* Botões Estilo Rococó */
+button {
+    background: linear-gradient(135deg, #f7cad0, #e899ac);
+    color: #5c0024;
+    border: 2px solid #d488a0;
+    border-radius: 25px;
+    padding: 10px 22px;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(180, 80, 110, 0.15);
+    transition: all 0.3s ease;
+    margin: 5px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #e899ac, #d47a93);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(180, 80, 110, 0.25);
+}
+
+/* Containers da Lista de Tarefas */
+output#listaTarefas, ul {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Itens da Lista (DIVs renderizadas pelo JS e LIs do Jinja2) */
+#listaTarefas div, ul li {
+    background-color: #ffffff;
+    border: 2px dashed #f4c2d0;
+    border-radius: 15px;
+    padding: 12px 20px;
+    color: #800033;
+    font-size: 1.05rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 8px rgba(244, 194, 208, 0.4);
+    list-style: none;
+}
+
+/* Botão de Apagar dentro da lista */
+#listaTarefas button, ul li a {
+    background: #ffe0e6;
+    border: 1px solid #d488a0;
+    color: #800033;
+    padding: 5px 12px;
+    font-size: 0.85rem;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+#listaTarefas button:hover, ul li a:hover {
+    background: #f7a8b8;
+    color: #ffffff;
+}
+
+/* Ajuste sutil na tag P decorativa do HTML */
+p {
+    text-align: center;
+    color: #d488a0;
+    margin: 15px 0;
+    font-size: 1.2rem;
 }
