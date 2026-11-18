@@ -1,4 +1,4 @@
-from datetime import datetime
+# from datetime import datetime
 
 from tarefas.models.database import Database
 
@@ -6,9 +6,9 @@ from tarefas.models.database import Database
 class Tarefa_classe:
     """Provê métodos para armazenar, recuperar e processar os dados 
     das tarefas criadas a partir do formulário principal"""
-    def __init__(self, titulo, id = None, data_conclusao = None):
+    def __init__(self, titulo_tarefa, id = None, data_conclusao = None):
         self.id = id
-        self.titulo=titulo
+        self.titulo = titulo_tarefa
         self.data_conclusao=data_conclusao
 
     def salvarTarefa(self):
@@ -23,7 +23,6 @@ class Tarefa_classe:
         with Database() as db:
             db.executar(sql, params)
 
-    @staticmethod
     def listarTarefas() -> list:
         """Retorna uma lista com todas as tarefas cadastradas."""
 
@@ -35,10 +34,34 @@ class Tarefa_classe:
             tarefas_banco = db.executar(sql)
 
         return tarefas_banco if tarefas_banco else []
-
+    
+    @staticmethod
     def apagarTarefa(id_tarefas : int):
         sql =  '''DELETE FROM tarefas WHERE id_tarefas = %s;'''
         params = (id_tarefas,)
+        with Database() as db:
+            db.executar(sql, params) 
+    
+    @staticmethod
+    def carregarPorId(id_tarefas):
+        sql = 'SELECT id_tarefas, titulo_tarefa, data_conclusão FROM tarefas WHERE id_tarefas = %s;'
+        params = (id_tarefas,)
+        with Database() as db:
+            resultado = db.executar(sql, params)
+        if resultado:
+            dados = resultado[0]
+            return Tarefa_classe(
+                id=dados['id_tarefas'],
+                titulo_tarefa=dados['titulo_tarefa'],
+                data_conclusao=dados['data_conclusão']
+            )
+        return None
+
+    def editarTarefa(self):
+        sql = '''UPDATE tarefas SET 
+        titulo_tarefa = %s, data_conclusão = %s)
+        'WHERE id_tarefas = %s;'''
+        params = (self.titulo, self.data_conclusao, self.id)
         with Database() as db:
             db.executar(sql, params)
 #Area 51

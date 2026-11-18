@@ -6,7 +6,7 @@
     <h3>
 ¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨
     </h3>
-    <title>{{titulo}}</title>
+    <title>{{titulo_da_pagina}}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -14,23 +14,36 @@
     <h3>
 ¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨
     </h3>
-    <form method="POST">
-        <input type="text" id="tituloTarefa" name="tituloTarefa">
-        <input type="date" id="dataConclusao" name="dataConclusao">
-        <button type="submit">Adicionar</button>
-    </form>
     <!--><output id="listaTarefas">Nenhuma tarefa cadastrada</output>
     <!-->
     <p>
    _.-°`⌏Ana Júlia⌎´°-._
             </p> 
 
-    <ul>
-        {% for tarefa in tarefas_da_pagina %}
-        <li>{{ tarefa.titulo_tarefa }} - {{ tarefa.data_conclusão }}
-            <a href="{{ url_for('apagar_id_especificado', id = tarefa.id_tarefas) }}">❌Apagar</a></li>
-            {% endfor %}
-        <ul>
+<form method="POST">
+    <input type="text" id="tituloTarefa" name="tituloTarefa" 
+    value="{{ tarefa_em_edicao.titulo if tarefa_em_edicao else '' }}"> 
+    <input type="date" id="dataConclusao" name="dataConclusao"
+    value="{{ tarefa_em_edicao.data_conclusao.strftime('%Y-%m-%d') 
+    if tarefa_em_edicao and tarefa_em_edicao.data_conclusao else '' }}"> 
+        <button type="submit">
+            {{ 'Atualizar' if tarefa_em_edicao else 'Adicionar' }}
+        </button> 
+</form> 
+<ul> 
+    {% for tarefa in tarefas_da_pagina %} 
+    <li>{{ tarefa.titulo_tarefa }} - {{ tarefa.data_conclusão }} 
+        <div> 
+            <a href="{{ url_for('editar_tarefa', id=tarefa.id_tarefas) }}">
+                ✏️Editar
+            </a> 
+            <a href="{{ url_for('apagar_id_especificado', id = tarefa.id_tarefas) }}">
+                ❌Apagar
+            </a> 
+        </div>
+    </li>
+    {% endfor %} 
+</ul>
     <!--<script> 
         // Aplicação MVC (Modelagem-Visualização-Controle)
 

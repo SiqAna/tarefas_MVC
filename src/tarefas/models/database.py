@@ -1,8 +1,10 @@
+from os import getenv
 from pathlib import Path
-from mysql.connector import Error
+
 import mysql.connector as mc
 from dotenv import load_dotenv
-from os import getenv
+from mysql.connector import Error
+
 
 class Database:
     """
