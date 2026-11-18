@@ -1,6 +1,7 @@
 # _*Gerenciador de tarefas*_
 ¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨
 <span style="color:pink">
+
 Este projeto servirá para aprimorarmos nossa lógica de programação ao mesmo tempo em que exploramos conceitos e técnicas de programação de back-end e full-stack. Vamos utilizar e desenvolver o conceito de MVC (Model-View-Controller), algumas particularidades da Programação Orientada a Objetos, Programação Funcional, persistência de dados (MySQL), microframework Flask e gerenciador de pacotes do Python (Astral uv).
 </span>
 
