@@ -6,7 +6,7 @@ from tarefas.models.database import Database
 class Tarefa_classe:
     """Provê métodos para armazenar, recuperar e processar os dados 
     das tarefas criadas a partir do formulário principal"""
-    def __init__(self, titulo_tarefa, id = None, 
+    def __init__(self, titulo, id = None, 
                  data_conclusao = None):
         self.id = id
         self.titulo = titulo_tarefa
