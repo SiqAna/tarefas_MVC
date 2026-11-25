@@ -29,8 +29,6 @@ def home():
 
         tarefa.editarTarefa()
 
-        tarefa.salvarTarefa()
-
         return redirect(url_for('home'))
 
     tarefas = Tarefa_classe.listarTarefas()
@@ -59,7 +57,6 @@ def editar_tarefa(id):
             data_conclusao=data_corrigida
             )
         tarefa.editarTarefa()
-  
         return redirect(url_for('home'))
 
     tarefas = Tarefa_classe.listarTarefas()

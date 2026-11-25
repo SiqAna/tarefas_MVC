@@ -6,10 +6,10 @@ from tarefas.models.database import Database
 class Tarefa_classe:
     """Provê métodos para armazenar, recuperar e processar os dados 
     das tarefas criadas a partir do formulário principal"""
-    def __init__(self, titulo_tarefa, id = None, 
+    def __init__(self, titulo, id = None, 
                  data_conclusao = None):
         self.id = id
-        self.titulo = titulo_tarefa
+        self.titulo = titulo
         self.data_conclusao=data_conclusao
 
     def salvarTarefa(self):
@@ -55,7 +55,7 @@ class Tarefa_classe:
             dados = resultado[0]
             return Tarefa_classe(
                 id=dados['id_tarefas'],
-                titulo_tarefa=dados['titulo_tarefa'],
+                titulo=dados['titulo_tarefa'],
                 data_conclusao=dados['data_conclusão']
             )
         return None
