@@ -15,12 +15,15 @@ def test():
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        titulo_form = request.form['tituloTarefa'] # casa com o  nome do input no form
-        data_conclusao_form = request.form['dataConclusao'] # casa com o nome do input no form
+        titulo_form = request.form['tituloTarefa'] 
+        # casa com o  nome do input no form
+        data_conclusao_form = request.form['dataConclusao'] 
+        # casa com o nome do input no form
         data_corrigida = data_conclusao_form or None
 
         # Instanciamos uma nova tarefa com os dados recebidos do form
-        tarefa = Tarefa_classe(titulo=titulo_form, data_conclusao=data_corrigida)
+        tarefa = Tarefa_classe(titulo=titulo_form, 
+                               data_conclusao=data_corrigida)
 
         # Editar a tarefa
 

@@ -7,10 +7,13 @@
 ¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨
     </h3>
     <title>{{titulo_da_pagina}}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" 
+    href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1 style="color: crimson;">Digite a tarefa e a data de conclusão (opcional):</h1>
+    <h1 style="color: crimson;">
+        Digite a tarefa e a data de conclusão (opcional):
+    </h1>
     <h3>
 ¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨-.°.-¨
     </h3>
@@ -34,10 +37,12 @@
     {% for tarefa in tarefas_da_pagina %} 
     <li>{{ tarefa.titulo_tarefa }} - {{ tarefa.data_conclusão }} 
         <div> 
-            <a href="{{ url_for('editar_tarefa', id=tarefa.id_tarefas) }}">
+            <a href=
+            "{{ url_for('editar_tarefa', id=tarefa.id_tarefas) }}">
                 ✏️Editar
             </a> 
-            <a href="{{ url_for('apagar_id_especificado', id = tarefa.id_tarefas) }}">
+            <a href=
+            "{{ url_for('apagar_id_especificado', id = tarefa.id_tarefas) }}">
                 ❌Apagar
             </a> 
         </div>

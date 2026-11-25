@@ -6,7 +6,8 @@ from tarefas.models.database import Database
 class Tarefa_classe:
     """Provê métodos para armazenar, recuperar e processar os dados 
     das tarefas criadas a partir do formulário principal"""
-    def __init__(self, titulo_tarefa, id = None, data_conclusao = None):
+    def __init__(self, titulo_tarefa, id = None, 
+                 data_conclusao = None):
         self.id = id
         self.titulo = titulo_tarefa
         self.data_conclusao=data_conclusao
@@ -15,7 +16,8 @@ class Tarefa_classe:
         """
         Salva a tarefa no banco de dados.
         """
-        sql = 'INSERT INTO tarefas (titulo_tarefa, data_conclusão) VALUES(%s, %s);'
+        sql = 'INSERT INTO tarefas ' \
+        '(titulo_tarefa, data_conclusão) VALUES(%s, %s);'
         params = (self.titulo, self.data_conclusao)
             # O uso de binding protege contra o SQL Injection
         
@@ -44,7 +46,8 @@ class Tarefa_classe:
     
     @staticmethod
     def carregarPorId(id_tarefas):
-        sql = 'SELECT id_tarefas, titulo_tarefa, data_conclusão FROM tarefas WHERE id_tarefas = %s;'
+        sql = 'SELECT id_tarefas, titulo_tarefa, data_conclusão ' \
+        'FROM tarefas WHERE id_tarefas = %s;'
         params = (id_tarefas,)
         with Database() as db:
             resultado = db.executar(sql, params)
@@ -64,6 +67,3 @@ class Tarefa_classe:
         params = (self.titulo, self.data_conclusao, self.id)
         with Database() as db:
             db.executar(sql, params)
-#Area 51
-#tarefa = Tarefa('Minha nova tarefa')
-#tarefa.salvarTarefa()
